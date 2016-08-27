@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--  Programmer : Maya Ahmed 
+      Files: index.html;
+      These file contains the codes for making a image gallery.
+      Date: "Aug 26 2016" -->
+
+	<head>
+		<meta charset="utf-8" />
+		<title>Punjiri: Web and Mobile Technologies.</title>
+		<link rel="stylesheet" type="text/css" href="gallery.css">
+	</head>
+
+	<body>
+		<div id="big_wrapper">
+          <div id="topStuff">
+          <header id="top_header">
+				<p> Image Gallery</p>
+			</header>
+			<nav id="top_menu">
+				<ul>
+
+
+<li>
+
+                  <div class="dropdown">
+                    <button onclick="myFunction()" class="dropbtn">Upload Images</button>                  
+                    <div id="myDropdown" class="dropdown-content">
+                   <p>  <input type="file" id= "inputFileToLoad" > </p>
+                   <p>  <input type="button" id="buttonLoadFile" value ="Load Selected File"; onclick="loadImageFileAsURL()"> </p>
+                    </div>
+                  </div>
+</li>
+
+
+                  <li>
+                    <div id="myNav" class="overlay">
+                      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"> &times;</a>
+                      <div class="overlay-content">
+                       <p> &copy; Punjiri Web and Mobile Technologies, 2016. </p>
+                       <p> Email: maya.ahmed@gmail.com</p>
+                      </div>
+                    </div>
+
+                    <span style="font-size:30px; cursor:pointer" onclick="openNav()"> &equiv;</span>
+                  </li>
+                                    
+                </ul>
+			</nav>
+            </div>
+     
+
+
+
+ <div id="container">
+       
+</div>
+
+
+
+
+
+ <script src="gallery.js"></script> 
+      
+</body>
+</html>

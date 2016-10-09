@@ -4,37 +4,75 @@
 <!--  Programmer : Maya Ahmed 
       Files: index.html;
       These file contains the codes for making a image gallery.
-      Date: "Aug 26 2016" -->
+      Date: "Aug 29 2016" -->
 
 	<head>
 		<meta charset="utf-8" />
 		<title>Punjiri: Web and Mobile Technologies.</title>
 		<link rel="stylesheet" type="text/css" href="gallery.css">
+
 	</head>
 
 	<body>
 		<div id="big_wrapper">
           <div id="topStuff">
           <header id="top_header">
-				<p> Image Gallery</p>
+				<p>Slide Show</p>
 			</header>
-			<nav id="top_menu">
-				<ul>
+		
 
+<nav id="top_menu">
+			
+	          <ul>
 
-<li>
-
+                <li>
                   <div class="dropdown">
-                    <button onclick="myFunction()" class="dropbtn">Upload Images</button>                  
+                    <button onclick="myFunction('myDropdown')" class="dropbtn">File Manager</button>                  
                     <div id="myDropdown" class="dropdown-content">
-                   <p>  <input type="file" id= "inputFileToLoad" > </p>
-                   <p>  <input type="button" id="buttonLoadFile" value ="Load Selected File"; onclick="loadImageFileAsURL()"> </p>
-                    </div>
-                  </div>
-</li>
+  
+        
+                      <div class="dropdown">
+                        <button onclick="myFunction('myDropdownFile')" class="dropbtn">Load File</button>                                         
+                        <div id="myDropdownFile" class="dropdown-content">  
+                          <input type="file" id= "inputFileToLoad" >
+                          <input type="button" id="buttonLoadFile" value ="Load Selected File"; 
+                                 onclick="loadImageFileAsURL()">      
+                        </div> 
+                        </div>             
+                        
 
+                            
+                      <div class="dropdown">
+                        <button onclick="myFunction('myDropdownFolder')" class="dropbtn">Load Folder</button>                                          <div id="myDropdownFolder" class="dropdown-content">
+                          <input name="dir" id="dir_input" type="file" webkitdirectory directory multiple/><br/>
+                      <!--    <label for="pripona">Filter file by file extension: </label>-->
+                          <select id="pripona">
+                            <option value="png">png</option>
+                            <option value="jpg">jpg</option>
+                            <option value="doc">doc</option>
+                            <option value="fits">FITS</option>
+                          </select>
+                          <input type="button" onclick="loadDir()" value="Upload"/>
+                         </div> </div>
 
-                  <li>
+           <div class="dropdown">
+                        <button onclick="myFunction('myDropdownSlide')" class="dropbtn">Slide Show</button>                                          <div id="myDropdownSlide" class="dropdown-content">  
+         <p> <input type="button" value="Start Slide Show" onclick="start()" </p>
+         <p> <input type="button" value="Stop Slide Show" onclick="stop()" </p>
+         <p> <input type="button" value="Close Slide Show" onclick="closeSlide()" </p>
+                    </div></div>
+
+           <div class="dropdown">
+                        <button onclick="myFunction('myDropdownGallery')" class="dropbtn">Gallery</button>                                          <div id="myDropdownGallery" class="dropdown-content">  
+                          <p> <input type="button" value="Close Gallery" onclick="closeGallery()" </p>
+                                     <p> <input type="button" value="Open Gallery" onclick="openGallery()" </p>
+                    </div></div>
+                         </div> </div>
+                </li>
+
+	      
+                     
+        <li>
                     <div id="myNav" class="overlay">
                       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"> &times;</a>
                       <div class="overlay-content">
@@ -53,15 +91,22 @@
 
 
 
- <div id="container">
+
+
+<div id="overlayContainer">
        
 </div>
 
 
+ <div id="container">
+<h3> Gallery </h3>       
+</div>
 
 
 
  <script src="gallery.js"></script> 
+
+
       
 </body>
 </html>

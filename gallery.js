@@ -1,8 +1,28 @@
 slide= document.createElement("IMG");
  containerdiv = document.getElementById("container");
 overlayContainerdiv = document.getElementById("overlayContainer");
-galleryImages = new Array(); 
+galleryImages = new Array(); savedImages = new Array();
 n=0; s=0; 
+
+
+function initial(){
+  if (localStorage.savedGallery){ 
+       savedImages = JSON.parse(localStorage.savedGallery);
+         for(var i=0; i<  savedImages.length; i++){
+           galleryImages[i] = document.createElement("img");
+ galleryImages[i] .addEventListener("click", function() {
+       alert("clicked");
+}, false);
+           galleryImages[i].src=   savedImages[i];
+           containerdiv.appendChild(galleryImages[i]);
+           
+         }
+  }
+  console.log(galleryImages.length);
+}
+
+initial();
+
 
 
 //filter files by extension from all files selected by the user
@@ -45,11 +65,19 @@ for(i=0; i<filesSelected.length; i++){
             fileReader.onload = function(fileLoadedEvent) 
             {
                 galleryImages[k] = document.createElement("img");
+ galleryImages[k] .addEventListener("click", function() {
+                               alert("clicked");
+}, false);
                 galleryImages[k].src = fileLoadedEvent.target.result;
-                containerdiv.appendChild(galleryImages[k]); k=k+1;       
+                containerdiv.appendChild(galleryImages[k]);
+                savedImages.push(fileLoadedEvent.target.result );
+                localStorage.savedGallery = JSON.stringify(savedImages);
+                k=k+1; 
             };
-            
+           
+           
             fileReader.readAsDataURL(fileToLoad);
+
         }
 }                              
     }
@@ -190,15 +218,45 @@ function loadImageFileAsURL()
             var fileReader = new FileReader();
             fileReader.onload = function(fileLoadedEvent) 
             {
-              length=galleryImages.length;
-              galleryImages[length]           = document.createElement("img");
-               galleryImages[length].src = fileLoadedEvent.target.result;
-                containerdiv.appendChild(galleryImages[length]  );       
-                // document.body.appendChild(imageLoaded);
-            };
+         var    len =galleryImages.length;
+              galleryImages[len]           = document.createElement("img");
+              galleryImages[len] .addEventListener("click", function()
+ {
+             alert("clicked");}, false);
+               galleryImages[len].src = fileLoadedEvent.target.result;
+                containerdiv.appendChild(galleryImages[len]  );
+              savedImages.push(fileLoadedEvent.target.result );
+                localStorage.savedGallery = JSON.stringify(savedImages);  
+                };
+
             fileReader.readAsDataURL(fileToLoad);
         }
     }
 }
 
+
+function clearAll(){
+
+ if (confirm("Are you sure you want to delete all data?") == true) {
+         localStorage.clear();
+         document.getElementById("container").innerHTML ='';   
+        
+  } 
+}
+
+
+function deleteImage(p){
+console.log(p);
+  console.log(galleryImages.length);
+ console.log(savedImages.length);
+gIm = galleryImages.splice(p, 1);
+sIm = savedImages.splice(p, 1);
+console.log(gIm.length);
+ console.log(sIm.length);
+console.log(galleryImages.length);
+ console.log(savedImages.length);
+localStorage.savedGallery = JSON.stringify(savedImages);  
+containerdiv.innerHTML="";
+initial();
+}
 

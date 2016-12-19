@@ -10,7 +10,7 @@
 		<meta charset="utf-8" />
 		<title>Punjiri: Web and Mobile Technologies.</title>
 		<link rel="stylesheet" type="text/css" href="gallery.css">
-
+	<link rel="stylesheet" type="text/css" href="edit.css">
 	</head>
 
 	<body>
@@ -21,33 +21,28 @@
 			</header>
 		
 
-<nav id="top_menu">
-			
-	          <ul>
+</div> <!-- topstuff -->
 
-                <li>
+<nav id="navId2" class="nav-side2" >
 
-<button onclick="clearAll()" class="dropbtn">Delete All</button>   </li>
-              
-<li>    <div class="dropdown">
-                    <button onclick="myFunction('myDropdown')" class="dropbtn">File Manager</button>                  
-                    <div id="myDropdown" class="dropdown-content">
-  
-        
-                      <div class="dropdown">
-                        <button onclick="myFunction('myDropdownFile')" class="dropbtn">Load File</button>                                         
-                        <div id="myDropdownFile" class="dropdown-content">  
-                          <input type="file" id= "inputFileToLoad" >
-                          <input type="button" id="buttonLoadFile" value ="Load Selected File"; 
-                                 onclick="loadImageFileAsURL()">      
-                        </div> 
-                        </div>             
-                        
+<div class="navContainer">
 
-                            
-                      <div class="dropdown">
-                        <button onclick="myFunction('myDropdownFolder')" class="dropbtn">Load Folder</button>                                          <div id="myDropdownFolder" class="dropdown-content">
-                          <input name="dir" id="dir_input" type="file" webkitdirectory directory multiple/><br/>
+
+
+
+<div class="editDiv">
+<h3> File upload: </h3>
+  <p>    <input type="file" id= "inputFileToLoad" > </p>
+
+    <p>  <input type="button" value="Load Seleced File" onclick="loadImageFileAsURL()"> </p>
+
+  </div>              
+
+
+<div class="editDiv">
+<h3> Folder upload: </h3>
+ 
+<p> <input name="dir" id="dir_input" type="file" webkitdirectory directory multiple/><br/>
                       <!--    <label for="pripona">Filter file by file extension: </label>-->
                           <select id="pripona">
                             <option value="png">png</option>
@@ -55,60 +50,62 @@
                             <option value="doc">doc</option>
                             <option value="fits">FITS</option>
                           </select>
-                          <input type="button" onclick="loadDir()" value="Upload"/>
-                         </div> </div>
+                          <input type="button" onclick="loadDir()" value="Upload"/> </p>
+</div>
 
-           <div class="dropdown">
-                        <button onclick="myFunction('myDropdownSlide')" class="dropbtn">Slide Show</button>                                          <div id="myDropdownSlide" class="dropdown-content">  
-         <p> <input type="button" value="Start Slide Show" onclick="start()" </p>
+<div class="editDiv">
+<h3> Edit: </h3>
+<p> <input type="button" value="Undo" onclick="undo()" > </p>
+<p> <input type="button" value="Delete All" onclick="clearAll()"> </p>
+ </div>    
+
+
+<div class="editDiv">
+<h3> Gallery: </h3>
+<p> <input type="button" value="Close Gallery" onclick="closeGallery()" >
+                                    <input type="button" value="Open Gallery" onclick="openGallery()" </p>
+
+</div>
+
+<div class="editDiv">
+<h3> Slide Show: </h3>
+<p> <input type="button" value="Start Slide Show" onclick="start()" </p>
          <p> <input type="button" value="Stop Slide Show" onclick="stop()" </p>
          <p> <input type="button" value="Close Slide Show" onclick="closeSlide()" </p>
-                    </div></div>
 
-           <div class="dropdown">
-                        <button onclick="myFunction('myDropdownGallery')" class="dropbtn">Gallery</button>                                          <div id="myDropdownGallery" class="dropdown-content">  
-                          <p> <input type="button" value="Close Gallery" onclick="closeGallery()" </p>
-                                     <p> <input type="button" value="Open Gallery" onclick="openGallery()" </p>
-                    </div></div>
-                         </div> </div>
-                </li>
+</div>
 
-	      
+<div id="contacts" class="editDiv"> 
+<h3> Contacts: </h3>
+<p>  &copy; Punjiri Web and Mobile Technologies, 2016.  <br/> 
+Mangalore, Karnataka, India  <br/>  Email: maya.ahmed@gmail.com <br/> </p>
+
+</div>
+
+<a href="#" class="nav-toggle2" id="toggleButton2"  onclick="toggleRight()"></a>
+
+
+</div> <!-- navContainer -->
+
+</nav>      
+                             
+                    
                      
-        <li>
-                    <div id="myNav" class="overlay">
-                      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"> &times;</a>
-                      <div class="overlay-content">
-                       <p> &copy; Punjiri Web and Mobile Technologies, 2016. </p>
-                       <p> Email: maya.ahmed@gmail.com</p>
-                      </div>
-                    </div>
 
-                    <span style="font-size:30px; cursor:pointer" onclick="openNav()"> &equiv;</span>
-                  </li>
-                                    
-                </ul>
-			</nav>
-            </div>
-     
+<div id="container">
+
+<div id="slideShowContainer"> </div>
 
 
+ <div id="galleryContainer"> </div>
 
-
-
-<div id="overlayContainer">
-       
 </div>
 
 
- <div id="container">
- 
-</div>
-
-
+</div> <!-- big-wrapper-->
 
  <script src="gallery.js"></script> 
-
+<script src="edit.js"></script> 
 
       
 </body>

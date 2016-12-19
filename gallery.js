@@ -1,6 +1,6 @@
 slide= document.createElement("IMG");
- containerdiv = document.getElementById("container");
-overlayContainerdiv = document.getElementById("overlayContainer");
+ galleryContainerdiv = document.getElementById("galleryContainer");
+slideShowContainerdiv = document.getElementById("slideShowContainer");
 galleryImages = new Array(); savedImages = new Array();
 n=0; s=0; 
 
@@ -11,14 +11,14 @@ function initial(){
          for(var i=0; i<  savedImages.length; i++){
            galleryImages[i] = document.createElement("img");
  galleryImages[i] .addEventListener("click", function() {
-       alert("clicked");
+     //  alert("clicked");
 }, false);
            galleryImages[i].src=   savedImages[i];
-           containerdiv.appendChild(galleryImages[i]);
+           galleryContainerdiv.appendChild(galleryImages[i]);
            
          }
   }
-  console.log(galleryImages.length);
+  
 }
 
 initial();
@@ -66,10 +66,10 @@ for(i=0; i<filesSelected.length; i++){
             {
                 galleryImages[k] = document.createElement("img");
  galleryImages[k] .addEventListener("click", function() {
-                               alert("clicked");
+     //   alert("clicked");
 }, false);
                 galleryImages[k].src = fileLoadedEvent.target.result;
-                containerdiv.appendChild(galleryImages[k]);
+                galleryContainerdiv.appendChild(galleryImages[k]);
                 savedImages.push(fileLoadedEvent.target.result );
                 localStorage.savedGallery = JSON.stringify(savedImages);
                 k=k+1; 
@@ -126,13 +126,13 @@ window.onclick = function(event) {
 // start slide show
 
   function closeGallery(){
-slideClose(containerdiv);
+slideClose(galleryContainerdiv);
   }
 
  function openGallery(){
 
-   slideOpen(containerdiv);
-containerdiv.style.border="1px solid khaki";
+   slideOpen(galleryContainerdiv);
+galleryContainerdiv.style.border="1px solid khaki";
   }
 
 function stop(){
@@ -141,14 +141,14 @@ function stop(){
 }
 
 function closeSlide(){
-slideClose(overlayContainerdiv);
+slideClose(slideShowContainerdiv);
 }
 
 function start(){
   s=0;   
   if(galleryImages.length==0) alert("Error! No images to start slide show. Add images and try again.");
   else{
-slideOpen(overlayContainerdiv);
+slideOpen(slideShowContainerdiv);
 slideit();}
 }
 
@@ -168,7 +168,7 @@ n= galleryImages.length;
     slide.setAttribute("width", "304");
     slide.setAttribute("width", "228");
     slide.setAttribute("alt", "artist");
-   overlayContainerdiv.appendChild(slide);
+   slideShowContainerdiv.appendChild(slide);
  }
 
 slide.src = galleryImages[step].src;
@@ -206,7 +206,7 @@ el.style.border="none";
 function loadImageFileAsURL()
 {
 
-   var containerdiv = document.getElementById("container");
+   var galleryContainerdiv = document.getElementById("galleryContainer");
 
     var filesSelected = document.getElementById("inputFileToLoad").files;
     if (filesSelected.length > 0)
@@ -222,9 +222,10 @@ function loadImageFileAsURL()
               galleryImages[len]           = document.createElement("img");
               galleryImages[len] .addEventListener("click", function()
  {
-             alert("clicked");}, false);
+   // alert("clicked");
+}, false);
                galleryImages[len].src = fileLoadedEvent.target.result;
-                containerdiv.appendChild(galleryImages[len]  );
+                galleryContainerdiv.appendChild(galleryImages[len]  );
               savedImages.push(fileLoadedEvent.target.result );
                 localStorage.savedGallery = JSON.stringify(savedImages);  
                 };
@@ -239,24 +240,17 @@ function clearAll(){
 
  if (confirm("Are you sure you want to delete all data?") == true) {
          localStorage.clear();
-         document.getElementById("container").innerHTML ='';   
+         document.getElementById("galleryContainer").innerHTML ='';   
         
   } 
 }
 
 
-function deleteImage(p){
-console.log(p);
-  console.log(galleryImages.length);
- console.log(savedImages.length);
-gIm = galleryImages.splice(p, 1);
-sIm = savedImages.splice(p, 1);
-console.log(gIm.length);
- console.log(sIm.length);
-console.log(galleryImages.length);
- console.log(savedImages.length);
+function undo(){
+  galleryImages.pop();
+savedImages.pop();
 localStorage.savedGallery = JSON.stringify(savedImages);  
-containerdiv.innerHTML="";
-initial();
+    document.getElementById("galleryContainer").innerHTML =''; 
+    initial();
 }
 
